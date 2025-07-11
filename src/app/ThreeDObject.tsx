@@ -2,7 +2,7 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Line, Html } from "@react-three/drei";
 import useSWR from 'swr';
-import * as THREE from 'three';
+
 
 // A simple fetcher function for useSWR
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
