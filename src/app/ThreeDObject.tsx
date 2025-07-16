@@ -42,7 +42,7 @@ export default function ThreeDObject() {
   const { data } = useSWR('/api/sensor-data', fetcher, { refreshInterval: 2000 });
 
   return (
-    <div className="w-full h-full max-w-[600px] max-h-[600px] aspect-square">
+    <div className="w-500 h-100 aspect-square">
       <Canvas camera={{ position: [0, 1, 10], fov: 50 }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} />
@@ -50,10 +50,10 @@ export default function ThreeDObject() {
           <Model />
           {data ? (
             <>
-              <DataPoint name="Temp" value={`${data.temperature}°C`} position={[-3, 2, 0]} />
-              <DataPoint name="Humidity" value={`${data.humidity}%`} position={[3, 1.5, 0]} />
-              <DataPoint name="Pressure" value={`${data.pressure} hPa`} position={[-3.5, -1, 0]} />
-              <DataPoint name="Accel" value={`X:${data.acceleration.x} Y:${data.acceleration.y} Z:${data.acceleration.z}`} position={[3.5, -1.5, 0]} />
+              <DataPoint name="Temp" value={`${data.temperature}°C`} position={[-5, 3, 0]} />
+              <DataPoint name="Humidity" value={`${data.humidity}%`} position={[5, 2.5, 0]} />
+              <DataPoint name="Pressure" value={`${data.pressure} hPa`} position={[-6, -2, 0]} />
+              <DataPoint name="Accel" value={`X:${data.acceleration.x} Y:${data.acceleration.y} Z:${data.acceleration.z}`} position={[6, -2.5, 0]} />
             </>
           ) : (
             <Html center><div className="text-white">Loading sensor data...</div></Html>

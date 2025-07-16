@@ -19,7 +19,7 @@ export default function Home() {
       <MapBackground />
       <main className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4">
         <Image src="/logo.png" alt="Logo" width={300} height={300} className="mb-4" />
-        <div className="scale-100 hover:scale-200 transition duration-500 ease-in-out ">
+        <div className="scale-100 hover:scale-120 transition duration-500 ease-in-out ">
         <ThreeDObjectClient />
         </div>
         <div className="text-center text-white/70 mt-4 font-mono text-sm">
