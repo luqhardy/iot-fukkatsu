@@ -19,7 +19,9 @@ export default function Home() {
       <MapBackground />
       <main className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4">
         <Image src="/logo.png" alt="Logo" width={300} height={300} className="mb-4" />
+        <div className="hover:scale-200 transition duration-500 ease-in-out flex justify-center items-center">
         <ThreeDObjectClient />
+        </div>
         <div className="text-center text-white/70 mt-4 font-mono text-sm">
           <p>Live sensor data from an IoT device. (Currently using mock data)</p>
           <a
