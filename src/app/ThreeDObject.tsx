@@ -29,7 +29,7 @@ function DataPoint({ name, value, position }: { name: string, value: string, pos
       />
       {/* HTML component to display the text label */}
       <Html position={position} center>
-        <div className="text-white text-xs bg-black/60 p-1 rounded-sm whitespace-nowrap font-mono">
+        <div className="text-white text-xl bg-black/60 p-1 rounded-sm whitespace-nowrap font-mono">
           <span className="font-bold">{name}:</span> {value}
         </div>
       </Html>
