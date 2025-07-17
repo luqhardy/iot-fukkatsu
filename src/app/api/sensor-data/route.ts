@@ -12,7 +12,7 @@ export async function GET() {
     // Fetch the latest entry from the 'sensor_data' table
     // Assumes you have a 'created_at' column for ordering
     const { data: latestEntry, error } = await supabase
-      .from('sensor_data') // <-- IMPORTANT: Make sure this matches your table name
+      .from('sensor_readings') // <-- IMPORTANT: Make sure this matches your table name
       .select('*')
       .order('created_at', { ascending: false })
       .limit(1)
