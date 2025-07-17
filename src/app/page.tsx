@@ -17,13 +17,13 @@ export default function Home() {
     <>
       <WelcomeModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <MapBackground />
-      <main className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4">
+      <main className="relative z-10 flex flex-col items-center justify-center min-h-screen">
         <Image src="/logo.png" alt="Logo" width={300} height={300} className="mb-4" />
         <div className="scale-100 hover:scale-120 transition duration-500 ease-in-out ">
         <ThreeDObjectClient />
         </div>
         <div className="text-center text-white/70 mt-4 font-mono text-sm">
-          <p>Live sensor data from an IoT device. Updates every 5 minutes</p>
+          <p>Live sensor data from an IoT device. <br></br> Updates every 5 minutes</p>
           <a
             href="https://luqmanhadi.com"
             target="_blank"
