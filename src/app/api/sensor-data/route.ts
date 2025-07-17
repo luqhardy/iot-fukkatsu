@@ -8,8 +8,8 @@ const supabase = createClient(
 );
 
 // Helper function to safely format numbers
-function safeToFixed(value, decimals) {
-  return value !== null && value !== undefined ? Number(value).toFixed(decimals) : null;
+function safeToFixed(value: number | null | undefined, decimals: number): string | null {
+  return value != null ? Number(value).toFixed(decimals) : null;
 }
 
 export async function GET() {
