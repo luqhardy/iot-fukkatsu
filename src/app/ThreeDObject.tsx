@@ -51,10 +51,21 @@ export default function ThreeDObject() {
           {data ? (
             <>
               <DataPoint name="Temp" value={`${data.temperature}°C`} position={[-5, 3, 0]} />
-              <DataPoint name="Humidity" value={`${data.humidity}%`} position={[5, 2.5, 0]} />
+              <DataPoint
+                name="Humidity"
+                value={`${data.humidity}%`}
+                position={[5, 2.5, 0]}
+              />
               <DataPoint name="Pressure" value={`${data.pressure} hPa`} position={[-6, -2, 0]} />
-              <DataPoint name="Accel" value={`X:${data.acceleration.x} Y:${data.acceleration.y} Z:${data.acceleration.z}`} position={[6, -2.5, 0]} />
+              {data.acceleration ? (
+                <DataPoint
+                  name="Accel"
+                  value={`X:${data.acceleration.x} Y:${data.acceleration.y} Z:${data.acceleration.z}`}
+                  position={[6, -2.5, 0]}
+                />
+              ) : null}
             </>
+
           ) : (
             <Html center><div className="text-white">Loading sensor data...</div></Html>
           )}
