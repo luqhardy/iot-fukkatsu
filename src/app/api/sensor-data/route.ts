@@ -30,12 +30,12 @@ export async function GET() {
       temperature: latestEntry.temperature.toFixed(1),
       humidity: latestEntry.humidity.toFixed(1),
       pressure: latestEntry.pressure.toFixed(1),
-      altitude: latestEntry.pressure.toFixed(1),
-      acceleration: {
+      altitude: latestEntry.altitude !== null ? latestEntry.altitude.toFixed(1) : null,
+      acceleration: latestEntry.accel_x !== null && latestEntry.accel_y !== null && latestEntry.accel_z !== null ? {
         x: latestEntry.accel_x.toFixed(2),
         y: latestEntry.accel_y.toFixed(2),
         z: latestEntry.accel_z.toFixed(2),
-      },
+      } : null,
     };
 
     return NextResponse.json(formattedData);
