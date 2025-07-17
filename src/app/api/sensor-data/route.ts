@@ -7,35 +7,37 @@ const supabase = createClient(
   process.env.SUPABASE_ANON_KEY!
 );
 
+// Helper function to safely format numbers
+function safeToFixed(value, decimals) {
+  return value !== null && value !== undefined ? Number(value).toFixed(decimals) : null;
+}
+
 export async function GET() {
   try {
-    // Fetch the latest entry from the 'sensor_data' table
-    // Assumes you have a 'created_at' column for ordering
+    // Fetch the latest entry from the 'sensor_readings' table
     const { data: latestEntry, error } = await supabase
-      .from('sensor_readings') // <-- IMPORTANT: Make sure this matches your table name
+      .from('sensor_readings')
       .select('*')
       .order('created_at', { ascending: false })
       .limit(1)
-      .single(); // .single() returns one object instead of an array
+      .single();
 
     if (error) {
-      // If there's an error (e.g., table not found, no rows), throw it
       throw error;
     }
 
-    // Format the data to match the structure your frontend expects.
-    // You might need to adjust the property names (e.g., latestEntry.temp)
-    // to match your Supabase table columns.
+    // Format the data using the helper function
     const formattedData = {
-      temperature: latestEntry.temperature.toFixed(1),
-      humidity: latestEntry.humidity.toFixed(1),
-      pressure: latestEntry.pressure.toFixed(1),
-      altitude: latestEntry.altitude !== null ? latestEntry.altitude.toFixed(1) : null,
+      temperature: safeToFixed(latestEntry.bmp_temperature, 1),
+      humidity: safeToFixed(latestEntry.humidity, 1),
+      pressure: safeToFixed(latestEntry.pressure, 1),
+      altitude: safeToFixed(latestEntry.altitude, 1),
       acceleration: latestEntry.accel_x !== null && latestEntry.accel_y !== null && latestEntry.accel_z !== null ? {
-        x: latestEntry.accel_x.toFixed(2),
-        y: latestEntry.accel_y.toFixed(2),
-        z: latestEntry.accel_z.toFixed(2),
+        x: safeToFixed(latestEntry.accel_x, 2),
+        y: safeToFixed(latestEntry.accel_y, 2),
+        z: safeToFixed(latestEntry.accel_z, 2),
       } : null,
+      bmp_temperature: safeToFixed(latestEntry.bmp_temperature, 1),
     };
 
     return NextResponse.json(formattedData);

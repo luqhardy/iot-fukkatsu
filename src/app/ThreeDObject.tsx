@@ -68,7 +68,7 @@ export default function ThreeDObject() {
   const { data, error, isLoading } = useSWR<SensorData>('/api/sensor-data', fetcher, swrOptions);
 
   return (
-    <div className="w-full h-full max-w-[400px] aspect-square">
+    <div className="w-800 h-full max-w-[1000px] max-h-[500px] aspect-square">
       <Canvas camera={{ position: [0, 1, 10], fov: 50 }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} />
