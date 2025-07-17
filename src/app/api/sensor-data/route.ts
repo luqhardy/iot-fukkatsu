@@ -30,6 +30,7 @@ export async function GET() {
       temperature: latestEntry.temperature.toFixed(1),
       humidity: latestEntry.humidity.toFixed(1),
       pressure: latestEntry.pressure.toFixed(1),
+      altitude: latestEntry.pressure.toFixed(1),
       acceleration: {
         x: latestEntry.accel_x.toFixed(2),
         y: latestEntry.accel_y.toFixed(2),
