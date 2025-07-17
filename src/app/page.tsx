@@ -23,7 +23,7 @@ export default function Home() {
         <ThreeDObjectClient />
         </div>
         <div className="text-center text-white/70 mt-4 font-mono text-sm">
-          <p>Live sensor data from an IoT device.</p>
+          <p>Live sensor data from an IoT device. Updates every 5 minutes</p>
           <a
             href="https://luqmanhadi.com"
             target="_blank"
