@@ -1,4 +1,5 @@
-"use client";
+"use cli
+nt";
 
 import React, { useState, useEffect } from "react";
 import MapBackground from "./MapBackground";
@@ -18,7 +19,7 @@ const formatTimestamp = (timestamp: string | undefined) => {
       minute: '2-digit',
       hour12: true,
     });
-  } catch (e) {
+  } catch {
     return "Invalid date";
   }
 };
