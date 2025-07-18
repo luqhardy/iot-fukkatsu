@@ -7,6 +7,7 @@ import Image from "next/image";
 import WelcomeModal from "./WelcomeModal";
 import { useSensorData } from "./useSensorData";
 
+
 const formatTimestamp = (timestamp: string | undefined) => {
   if (!timestamp) return "Loading...";
   try {
