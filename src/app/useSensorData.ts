@@ -2,6 +2,7 @@
 import useSWR from "swr";
 
 interface SensorData {
+  created_at: string;
   temperature: string;
   humidity: string;
   pressure: string;
