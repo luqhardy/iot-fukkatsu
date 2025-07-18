@@ -5,9 +5,26 @@ import MapBackground from "./MapBackground";
 import ThreeDObjectClient from "./ThreeDObjectClient";
 import Image from "next/image";
 import WelcomeModal from "./WelcomeModal";
+import { useSensorData } from "./useSensorData";
+
+const formatTimestamp = (timestamp: string | undefined) => {
+  if (!timestamp) return "Loading...";
+  try {
+    return new Date(timestamp).toLocaleString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    });
+  } catch (e) {
+    return "Invalid date";
+  }
+};
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { data: sensorData } = useSensorData();
 
   useEffect(() => {
     setIsModalOpen(true);
@@ -23,7 +40,11 @@ export default function Home() {
         <ThreeDObjectClient />
         </div>
         <div className="text-center text-white/70 mt-4 font-mono text-sm">
-          <p>Live sensor data from an IoT device. <br></br> Updates every 5 minutes</p>
+          <p>
+            Live sensor data from an IoT device. <br />
+            Updates every 5 minutes
+            <span className="text-white/50 text-xs ml-2">&bull; Last updated: {formatTimestamp(sensorData?.created_at)}</span>
+          </p>
           <a
             href="https://luqmanhadi.com"
             target="_blank"
